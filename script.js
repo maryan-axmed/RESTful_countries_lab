@@ -1,5 +1,7 @@
 console.log("Testing, testing, 1 2 3 ...")
 
+const button = document.querySelector("#button");
+const input = document.getElementById("country");
 let globalVariable;
 
 // create a function that has fetch() 
@@ -27,3 +29,33 @@ const setUp = async () => {
 // so idk?? make the event listener anyways 
 
 window.addEventListener("load", setUp);
+
+// need a function newElements()
+// this should ceate new HTML elements (.createElement())
+// populate the elements with info about each country 
+// .appendChild them to the <ul></ul> element 
+
+const newElements = async () => {
+    // create new div element 
+    const countryContainer = document.createElement("div");
+    // create "li" element 
+    // populate "li" with information about each country
+    countryJsonData.message.forEach((url) => {
+        const countryItem = document.createElement("li");
+        countryItem.src = url;
+        countryContainer.appendChild(countryItem); 
+    })
+    // append countryContainer to body
+    document.querySelector("body").appendChild(countryContainer);
+}
+
+
+// printInput() function
+// need to print the input to the console when something is submitted
+button.addEventListener('click', (event) =>{
+    // preventDefault will stop the page from reloading after the
+    // form is submitted 
+    event.preventDefault();
+    const printedInput = input.value;
+    console.log(printedInput);
+})
